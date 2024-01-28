@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Remittance"
 include(":app")
- 
+include(":domain")
