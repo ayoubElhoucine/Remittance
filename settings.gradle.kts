@@ -17,3 +17,4 @@ rootProject.name = "Remittance"
 include(":app")
 include(":domain")
 include(":data")
+include(":presentation")

@@ -1,4 +1,4 @@
-package com.ayoub.remittance.ui.theme
+package com.ayoub.presentation.theme
 
 import android.app.Activity
 import android.os.Build

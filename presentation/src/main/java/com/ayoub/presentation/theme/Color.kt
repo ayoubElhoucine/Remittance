@@ -1,4 +1,4 @@
-package com.ayoub.remittance.ui.theme
+package com.ayoub.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
