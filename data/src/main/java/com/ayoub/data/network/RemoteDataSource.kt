@@ -11,6 +11,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 import com.ayoub.data.BuildConfig
 
+
 @Singleton
 class RemoteDataSource @Inject constructor(
     application: Application,
