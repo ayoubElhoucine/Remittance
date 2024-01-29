@@ -1,5 +1,6 @@
 package com.ayoub.presentation.components
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,8 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ayoub.presentation.ui.theme.primary100
@@ -19,7 +20,7 @@ import com.ayoub.presentation.ui.theme.white
 @Composable
 internal fun MyButton(
     modifier: Modifier = Modifier,
-    text: String,
+    @StringRes text: Int,
     onClick: () -> Unit,
     enabled: Boolean = true,
     color: Color = primary100,
@@ -37,16 +38,10 @@ internal fun MyButton(
         )
     ) {
         Text(
-            text = text,
+            text = stringResource(id = text),
             fontWeight = FontWeight.W500,
             fontSize = 16.sp,
             color = white,
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ButtonPreview() {
-    MyButton(onClick = { /*TODO*/ }, text = "Click")
 }

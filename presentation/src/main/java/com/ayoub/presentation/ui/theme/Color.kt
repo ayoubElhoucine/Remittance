@@ -7,6 +7,7 @@ internal val primary70 = Color(8, 160, 117, 255)
 internal val primary05 = Color(237, 248, 245, 255)
 internal val primary15 = Color(200, 234, 225, 255)
 
+internal val grey50 = Color(127, 136, 149, 255)
 internal val grey25 = Color(191, 195, 202, 255)
 internal val grey05 = Color(242, 243, 244, 255)
 

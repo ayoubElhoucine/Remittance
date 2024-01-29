@@ -4,7 +4,7 @@ import com.ayoub.data.entity.CountryResponse
 import com.ayoub.data.entity.RecipientResponse
 import retrofit2.http.GET
 
-internal interface CountryApi {
+interface CountryApi {
 
     @GET("MonecoHQ/fake-api/countries")
     suspend fun getCountries(): List<CountryResponse>?

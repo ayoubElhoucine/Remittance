@@ -12,6 +12,9 @@ internal fun HomeScreen(
 ) {
     ScreenLayout(
         color = primary05,
+        footer = {
+            NavigationBarView(onSendOptions = onSendOptions)
+        }
     ) {
 
     }

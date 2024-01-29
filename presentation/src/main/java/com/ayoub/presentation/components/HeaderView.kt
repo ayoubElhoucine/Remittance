@@ -1,6 +1,7 @@
 package com.ayoub.presentation.components
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,7 +31,7 @@ import com.ayoub.presentation.ui.theme.white
 
 @Composable
 internal fun HeaderView(
-    title: String,
+    @StringRes title: Int,
     onClose: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
@@ -47,7 +49,7 @@ internal fun HeaderView(
             }
         }
         Text(
-            text = title,
+            text = stringResource(id = title),
             fontSize = 22.sp,
             fontWeight = FontWeight.SemiBold,
             color = black,
@@ -79,5 +81,5 @@ private fun ItemView(
 @Preview(showBackground = true)
 @Composable
 fun HeaderPreview() {
-    HeaderView(title = "Any title", onBack = {})
+    HeaderView(title = R.string.home_title, onBack = {})
 }
