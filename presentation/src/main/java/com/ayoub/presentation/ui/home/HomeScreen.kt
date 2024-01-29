@@ -48,6 +48,7 @@ internal fun HomeScreen(
     ) {
         HeaderItem()
         BalanceItem()
+        HomeActionsView()
     }
 }
 

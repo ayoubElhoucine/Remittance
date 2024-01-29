@@ -64,7 +64,7 @@ internal fun NavigationBarView(
         Row(
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            listOf(Pages.HOME, Pages.CARDS, Pages.SENDS, Pages.TONOINES, Pages.SETTINGS).forEach { page ->
+            Pages.entries.forEach { page ->
                 if (page == Pages.SENDS) {
                     SendItem(
                         modifier = Modifier.weight(1f),
