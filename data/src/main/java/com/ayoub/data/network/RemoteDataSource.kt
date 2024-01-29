@@ -13,7 +13,7 @@ import com.ayoub.data.BuildConfig
 
 
 @Singleton
-class RemoteDataSource @Inject constructor(
+internal class RemoteDataSource @Inject constructor(
     application: Application,
 ) {
     private val baseUrl: String = "https://my-json-server.typicode.com/"
