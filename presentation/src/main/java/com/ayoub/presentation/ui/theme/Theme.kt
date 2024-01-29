@@ -1,4 +1,4 @@
-package com.ayoub.presentation.theme
+package com.ayoub.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -16,15 +16,15 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = primary100,
+    secondary = primary70,
+    tertiary = accent100
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = primary100,
+    secondary = primary70,
+    tertiary = accent100
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -57,7 +57,8 @@ fun RemittanceTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = white.toArgb()
+            window.navigationBarColor = white.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
