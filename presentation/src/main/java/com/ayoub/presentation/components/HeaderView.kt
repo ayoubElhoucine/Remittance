@@ -78,6 +78,6 @@ private fun ItemView(
 
 @Preview(showBackground = true)
 @Composable
-fun Preview() {
+fun HeaderPreview() {
     HeaderView(title = "Any title", onBack = {})
 }
