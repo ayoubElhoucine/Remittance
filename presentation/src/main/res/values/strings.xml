@@ -1,3 +1,48 @@
 <resources>
-    <string name="app_name">Remittance</string>
+    <string name="home_title">Hey, John Doe</string>
+    <string name="top_up">Top up balance</string>
+    <string name="withdraw_money">Withdraw money</string>
+    <string name="get_iban">Get IBAN</string>
+    <string name="view_analytics">View analytics</string>
+    <string name="transactions">Transactions</string>
+    <string name="your_balance">Your balance</string>
+
+    <string name="home">Home</string>
+    <string name="cards">Cards</string>
+    <string name="tontines">Tontines</string>
+    <string name="settings">Settings</string>
+
+    <string name="send_money">Send money</string>
+    <string name="to_moneco_balance">To Moneco balance</string>
+    <string name="bank_transfer">Bank transfer</string>
+    <string name="send_to_africa">Send to Africa</string>
+    <string name="mobile_wallets">Mobile wallets</string>
+
+    <string name="prev_recipient">Previous recipients</string>
+    <string name="new_recipient">New recipient</string>
+    <string name="contact_phone">Contacts on your phone</string>
+    <string name="search">Search</string>
+    <string name="next">Continue</string>
+
+    <string name="choose_wallet">Choose a mobile wallet</string>
+    <string name="how_much">How much are you sending ?</string>
+    <string name="your_current_balance">Your current balance is</string>
+    <string name="yearly_free">Yearly free remittances</string>
+    <string name="yearly_free_msg">Remittances are free with Moneco until you reach your limit, which resets every year.</string>
+    <string name="check_free_msg">Check number of free remittance remaining</string>
+    <string name="fees_break">Fees breakdown</string>
+    <string name="moneco_fees">Moneco fees</string>
+    <string name="transfer_fees">Transfer fees</string>
+    <string name="conversion_rate">Conversion rate</string>
+    <string name="you_spend_total">You’ll spend in total</string>
+    <string name="recipient_gets">Recipient gets</string>
+    <string name="send">Send</string>
+
+    <string name="confirm_transfer">Confirm transfer</string>
+    <string name="confirm">Confirm</string>
+    <string name="you_sending">You’re sending</string>
+
+    <string name="success_transfer_msg">Your money is on the\nway. Get excited!</string>
+    <string name="got_it">Got it!</string>
+
 </resources>
