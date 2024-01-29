@@ -38,7 +38,11 @@ import com.ayoub.presentation.ui.theme.white
 
 
 private enum class Pages(val title: String) {
-    HOME("home"), CARDS("Cards"), SENDS("Send"), TONOINES("Tonotines"), SETTINGS("Settings")
+    HOME("home"),
+    CARDS("Cards"),
+    SENDS("Send"),
+    TONOINES("Tonotines"),
+    SETTINGS("Settings")
 }
 
 @Composable
@@ -128,7 +132,7 @@ private fun SendItem(
             contentAlignment = Alignment.Center,
         ) {
             Icon(
-                modifier = Modifier.size(18.dp),
+                modifier = Modifier.size(20.dp),
                 painter = painterResource(id = R.drawable.ic_send),
                 contentDescription = null,
                 tint = black,
