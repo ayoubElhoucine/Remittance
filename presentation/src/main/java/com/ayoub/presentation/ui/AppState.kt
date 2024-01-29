@@ -37,8 +37,4 @@ internal class AppState(
         route = to,
         inclusive = false,
     )
-
-    fun shouldShowAlarm(): Boolean {
-        return true
-    }
 }
