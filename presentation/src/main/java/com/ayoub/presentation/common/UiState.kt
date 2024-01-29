@@ -1,6 +1,6 @@
 package com.ayoub.presentation.common
 
-sealed class UiState {
+internal sealed class UiState {
     object Idle: UiState()
     object Loading: UiState()
     data class Success(val data: Any? = null): UiState()
