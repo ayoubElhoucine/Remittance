@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -89,6 +90,7 @@ private fun TabItem(
     Column(
         modifier = modifier
             .fillMaxSize()
+            .clip(CircleShape)
             .clickable(onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(4.dp),
@@ -121,7 +123,7 @@ private fun SendItem(
         Box(
             modifier = Modifier
                 .size(50.dp)
-                .shadow(elevation = 3.dp, shape = CircleShape)
+                .shadow(elevation = 6.dp, shape = CircleShape, spotColor = grey50)
                 .background(accent100, shape = CircleShape),
             contentAlignment = Alignment.Center,
         ) {
