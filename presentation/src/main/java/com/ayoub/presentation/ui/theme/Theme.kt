@@ -59,7 +59,7 @@ internal fun RemittanceTheme(
             val window = (view.context as Activity).window
             window.statusBarColor = white.toArgb()
             window.navigationBarColor = white.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
         }
     }
 
