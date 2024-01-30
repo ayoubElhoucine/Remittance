@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -27,8 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ayoub.presentation.R
 import com.ayoub.presentation.ui.theme.grey05
-import com.ayoub.presentation.ui.theme.grey25
-import com.ayoub.presentation.ui.theme.grey50
 import com.ayoub.presentation.ui.theme.primary05
 import com.ayoub.presentation.ui.theme.primary100
 import com.ayoub.presentation.ui.theme.white

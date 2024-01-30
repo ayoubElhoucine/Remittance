@@ -1,5 +1,6 @@
 package com.ayoub.presentation.ui.home
 
+import android.widget.ScrollView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -48,14 +49,17 @@ internal fun HomeScreen(
     ) {
         HeaderItem()
         BalanceItem()
-        HomeActionsView()
+        //HomeActionsView()
+        TransactionsView()
     }
 }
 
 @Composable
 private fun HeaderItem() {
     Row(
-        modifier = Modifier.padding(16.dp).padding(top = 20.dp),
+        modifier = Modifier
+            .padding(16.dp)
+            .padding(top = 20.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
@@ -125,6 +129,6 @@ private fun BalanceItem() {
 
 @Preview(showBackground = true)
 @Composable
-fun Preview() {
+fun BlancePreview() {
     BalanceItem()
 }
