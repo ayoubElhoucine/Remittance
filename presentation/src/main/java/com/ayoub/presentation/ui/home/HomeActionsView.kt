@@ -4,7 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
@@ -37,19 +40,19 @@ private enum class Actions {
     ANALYTICS,
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 internal fun HomeActionsView() {
-    LazyVerticalGrid(
-        modifier = Modifier.padding(horizontal = 18.dp, vertical = 10.dp).wrapContentSize(),
-        columns = GridCells.Fixed(2),
-        verticalArrangement = Arrangement.spacedBy(0.dp),
+    FlowRow(
+        modifier = Modifier.padding(vertical = 16.dp, horizontal = 18.dp),
+        maxItemsInEachRow = 2,
+        verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        itemsIndexed(Actions.entries) { _, action ->
+        Actions.entries.forEach { action ->
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp)
+                    .weight(1f, true)
                     .shadow(elevation = 20.dp, shape = RoundedCornerShape(16.dp), spotColor = grey05)
                     .background(white, shape = RoundedCornerShape(16.dp))
                     .padding(16.dp),

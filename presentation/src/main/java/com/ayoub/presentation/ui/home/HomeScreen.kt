@@ -1,6 +1,5 @@
 package com.ayoub.presentation.ui.home
 
-import android.widget.ScrollView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -30,8 +29,6 @@ import com.ayoub.presentation.components.ScreenLayout
 import com.ayoub.presentation.ui.theme.black
 import com.ayoub.presentation.ui.theme.grey05
 import com.ayoub.presentation.ui.theme.primary01
-import com.ayoub.presentation.ui.theme.primary100
-import com.ayoub.presentation.ui.theme.primary70
 import com.ayoub.presentation.ui.theme.walletGreen1
 import com.ayoub.presentation.ui.theme.walletGreen2
 import com.ayoub.presentation.ui.theme.white
@@ -49,7 +46,7 @@ internal fun HomeScreen(
     ) {
         HeaderItem()
         BalanceItem()
-        //HomeActionsView()
+        HomeActionsView()
         TransactionsView()
     }
 }

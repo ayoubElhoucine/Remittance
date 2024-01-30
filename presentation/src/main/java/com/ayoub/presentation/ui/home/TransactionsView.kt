@@ -37,7 +37,7 @@ import com.ayoub.presentation.ui.theme.white
 @Composable
 internal fun TransactionsView() {
     Column(
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier.padding(vertical = 16.dp, horizontal = 18.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Text(
