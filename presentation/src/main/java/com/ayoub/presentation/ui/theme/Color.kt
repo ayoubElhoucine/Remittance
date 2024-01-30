@@ -11,6 +11,7 @@ internal val walletGreen1 = Color(0, 168, 90, 255)
 internal val walletGreen2 = Color(5, 92, 0, 255)
 
 internal val grey100 = Color(0, 18, 44, 255)
+internal val grey70 = Color(64, 77, 97, 255)
 internal val grey50 = Color(127, 136, 149, 255)
 internal val grey25 = Color(191, 195, 202, 255)
 internal val grey05 = Color(242, 243, 244, 255)

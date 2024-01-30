@@ -23,6 +23,8 @@ internal class RecipientViewModel @Inject constructor(
     private val _countriesUiState: MutableStateFlow<UiState> = MutableStateFlow(UiState.Loading)
     val countriesUiState: StateFlow<UiState> get() = _countriesUiState
 
+    private var recipientList: List<Recipient>? = null
+
     init {
         getRecipients()
         getCountries()
@@ -33,6 +35,7 @@ internal class RecipientViewModel @Inject constructor(
         when (val result = recipientRepo.getRecipients()) {
             is Resource.Success -> {
                 (result.value as? List<Recipient>)?.let { data ->
+                    recipientList = data
                     if (data.isEmpty()) _uiState.value = RecipientUiState.Empty
                     else _uiState.value = RecipientUiState.Success(data)
                 } ?: run { _uiState.value = RecipientUiState.Fail("Something went wrong") }
@@ -50,6 +53,13 @@ internal class RecipientViewModel @Inject constructor(
                 } ?: run { _countriesUiState.value = UiState.Fail("Something went wrong") }
             }
             is Resource.Failure -> _countriesUiState.value = UiState.Fail(message = result.message)
+        }
+    }
+
+    fun filter(text: String) {
+        recipientList?.filter { it.toString().uppercase().contains(text.uppercase()) }?.let { data ->
+            if (data.isEmpty()) _uiState.value = RecipientUiState.Empty
+            else _uiState.value = RecipientUiState.Success(data)
         }
     }
 }

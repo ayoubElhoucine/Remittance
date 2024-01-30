@@ -1,5 +1,6 @@
 package com.ayoub.presentation.ui.recipient
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -37,6 +38,7 @@ import com.ayoub.presentation.ui.theme.grey05
 import com.ayoub.presentation.ui.theme.grey100
 import com.ayoub.presentation.ui.theme.grey25
 import com.ayoub.presentation.ui.theme.grey50
+import com.ayoub.presentation.ui.theme.grey70
 
 @Composable
 internal fun PreviousRecipientView(
@@ -52,7 +54,6 @@ internal fun PreviousRecipientView(
             data = result.data,
             onSelectRecipient = onSelectRecipient
         )
-
         is RecipientUiState.Fail -> Unit
         null -> Unit
     }
@@ -76,11 +77,23 @@ private fun Loading(
 private fun Empty(
     modifier: Modifier = Modifier
 ) {
-    Box(
-        modifier = modifier,
-        contentAlignment = Alignment.Center,
+    Column(
+        modifier = modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        CircularProgress()
+        Image(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 40.dp),
+            painter = painterResource(id = R.drawable.bg_empty_state), 
+            contentDescription = null,
+        )
+        Text(
+            text = stringResource(id = R.string.no_result),
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Medium,
+            color = grey70,
+        )
     }
 }
 

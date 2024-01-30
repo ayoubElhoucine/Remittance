@@ -50,14 +50,16 @@ internal fun RecipientScreen(
         SearchTextField(
             modifier = Modifier.padding(16.dp),
             value = state.searchTextValue.value,
-            onValueChanged = state::onSearchValueChanged,
+            onValueChanged = { value ->
+                state.onSearchValueChanged(value)
+                viewModel.filter(value)
+            },
         )
         when (state.selectedPage.value) {
             RecipientPages.PREVIOUS -> PreviousRecipientView(
                 viewModel = viewModel,
                 onSelectRecipient = onWalletOptions
             )
-
             RecipientPages.NEW -> NewRecipientView(
                 viewModel = viewModel,
                 onSelectRecipient = onWalletOptions
