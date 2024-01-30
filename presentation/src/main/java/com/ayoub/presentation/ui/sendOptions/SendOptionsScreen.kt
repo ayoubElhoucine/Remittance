@@ -51,51 +51,9 @@ internal fun SendOptionsScreen(
         Spacer(modifier = Modifier.height(it.calculateTopPadding()))
         Divider(thickness = 1.dp, color = grey05)
         SendOptions.entries.forEach { option ->
-            SendOptionItem(title = title(option), icon = icon(option), onClick = onSendDestination)
+            OptionItem(title = title(option), icon = icon(option), onClick = onSendDestination)
             Divider(thickness = 1.dp, color = grey05)
         }
-    }
-}
-
-@Composable
-private fun SendOptionItem(
-    @StringRes title: Int,
-    @DrawableRes icon: Int,
-    onClick: () -> Unit,
-) {
-    Row(
-        modifier = Modifier
-            .clickable(onClick = onClick)
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .size(40.dp)
-                .clip(RoundedCornerShape(10.dp))
-                .background(primary05),
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                modifier = Modifier.size(16.dp),
-                painter = painterResource(id = icon),
-                contentDescription = null,
-                tint = primary100,
-            )
-        }
-        Text(
-            modifier = Modifier.weight(1f),
-            text = stringResource(id = title),
-            fontWeight = FontWeight.Medium,
-            fontSize = 16.sp,
-            color = grey100,
-        )
-        Icon(
-            modifier = Modifier.size(12.dp),
-            painter = painterResource(id = R.drawable.ic_arrow_right),
-            contentDescription = null,
-        )
     }
 }
 

@@ -72,7 +72,7 @@ private fun ItemView(
         contentAlignment = Alignment.Center
     ) {
         Icon(
-            modifier = Modifier.size(14.dp),
+            modifier = Modifier.size(16.dp),
             painter = painterResource(id = icon),
             contentDescription = null,
         )
