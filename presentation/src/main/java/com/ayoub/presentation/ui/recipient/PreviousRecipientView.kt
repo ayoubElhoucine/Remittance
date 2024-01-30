@@ -84,13 +84,13 @@ private fun Empty(
         Image(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 40.dp),
+                .padding(horizontal = 100.dp),
             painter = painterResource(id = R.drawable.bg_empty_state), 
             contentDescription = null,
         )
         Text(
             text = stringResource(id = R.string.no_result),
-            fontSize = 18.sp,
+            fontSize = 16.sp,
             fontWeight = FontWeight.Medium,
             color = grey70,
         )
