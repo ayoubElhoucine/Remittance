@@ -31,4 +31,8 @@ internal class RecipientState(
         selectedPage.value = page
     }
 
+    fun onSearchValueChanged(value: String) {
+        searchTextValue.value = value
+    }
+
 }

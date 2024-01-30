@@ -2,6 +2,7 @@ package com.ayoub.presentation.ui.recipient
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,13 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ayoub.presentation.R
 import com.ayoub.presentation.components.HeaderView
 import com.ayoub.presentation.components.ScreenLayout
+import com.ayoub.presentation.components.SearchTextField
 import com.ayoub.presentation.ui.theme.primary05
 import com.ayoub.presentation.ui.theme.primary100
 import com.ayoub.presentation.ui.theme.primary70
@@ -45,6 +46,11 @@ internal fun RecipientScreen(
     ) {
         Spacer(modifier = Modifier.height(it.calculateTopPadding()))
         PagesTabItem(selectedPage = state.selectedPage.value, onSelectPage = state::selectPage)
+        SearchTextField(
+            modifier = Modifier.padding(16.dp),
+            value = state.searchTextValue.value,
+            onValueChanged = state::onSearchValueChanged,
+        )
     }
 }
 
@@ -55,7 +61,7 @@ private fun PagesTabItem(
 ) {
     Row(
         modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(horizontal = 16.dp, vertical = 6.dp)
             .height(46.dp)
             .fillMaxHeight()
             .background(primary05, shape = RoundedCornerShape(8.dp))
@@ -77,7 +83,10 @@ private fun PageItem(
         modifier = modifier
             .fillMaxSize()
             .padding(2.dp)
-            .clickable { onClick(page) }
+            .clickable(
+                interactionSource = MutableInteractionSource(),
+                indication = null
+            ) { onClick(page) }
             .background(
                 if (isSelected) primary70 else Color.Unspecified,
                 shape = RoundedCornerShape(6.dp)
