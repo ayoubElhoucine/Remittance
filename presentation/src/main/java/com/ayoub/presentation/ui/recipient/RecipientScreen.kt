@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.ayoub.domain.entity.Recipient
 import com.ayoub.presentation.R
 import com.ayoub.presentation.components.HeaderView
 import com.ayoub.presentation.components.ScreenLayout
@@ -35,7 +36,7 @@ import com.ayoub.presentation.ui.theme.white
 internal fun RecipientScreen(
     viewModel: RecipientViewModel = hiltViewModel(),
     onBack: () -> Unit,
-    onWalletOptions: () -> Unit,
+    onWalletOptions: (Recipient) -> Unit,
 ) {
     val state = rememberRecipientState()
 
@@ -51,6 +52,10 @@ internal fun RecipientScreen(
             value = state.searchTextValue.value,
             onValueChanged = state::onSearchValueChanged,
         )
+        when (state.selectedPage.value) {
+            RecipientPages.PREVIOUS -> PreviousRecipientView(viewModel = viewModel, onSelectRecipient = onWalletOptions)
+            RecipientPages.NEW -> NewRecipientView(viewModel = viewModel, onSelectRecipient = onWalletOptions)
+        }
     }
 }
 
