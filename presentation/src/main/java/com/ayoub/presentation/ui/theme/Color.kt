@@ -21,5 +21,6 @@ internal val accent100 = Color(255, 207, 0, 255)
 internal val blue100 = Color(27, 152, 224, 255)
 internal val blue10 = Color(234, 246, 252, 255)
 
+internal val red = Color(177,12,12 ,255)
 internal val black = Color.Black
 internal val white = Color.White

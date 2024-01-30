@@ -33,6 +33,7 @@ import com.ayoub.domain.entity.Recipient
 import com.ayoub.presentation.R
 import com.ayoub.presentation.common.UiState
 import com.ayoub.presentation.components.CircularProgress
+import com.ayoub.presentation.components.FailedView
 import com.ayoub.presentation.ui.theme.black
 import com.ayoub.presentation.ui.theme.grey05
 import com.ayoub.presentation.ui.theme.grey100
@@ -54,7 +55,10 @@ internal fun PreviousRecipientView(
             data = result.data,
             onSelectRecipient = onSelectRecipient
         )
-        is RecipientUiState.Fail -> Unit
+        is RecipientUiState.Fail -> FailedView(
+            modifier = Modifier.padding(top = 40.dp),
+            onRetry = viewModel::onRetryGetRecipient
+        )
         null -> Unit
     }
 }
@@ -85,7 +89,7 @@ private fun Empty(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 100.dp),
-            painter = painterResource(id = R.drawable.bg_empty_state), 
+            painter = painterResource(id = R.drawable.bg_empty_state),
             contentDescription = null,
         )
         Text(
@@ -151,13 +155,17 @@ private fun RecipientItem(
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Spacer(modifier = Modifier.weight(1f))
-            Box(modifier = Modifier
-                .size(12.dp)
-                .background(grey25, CircleShape))
-            Box(modifier = Modifier
-                .width(22.dp)
-                .height(10.dp)
-                .background(grey25, CircleShape))
+            Box(
+                modifier = Modifier
+                    .size(12.dp)
+                    .background(grey25, CircleShape)
+            )
+            Box(
+                modifier = Modifier
+                    .width(22.dp)
+                    .height(10.dp)
+                    .background(grey25, CircleShape)
+            )
             Spacer(modifier = Modifier.weight(1f))
         }
         Column(

@@ -48,4 +48,7 @@
     <string name="success_transfer_msg">Your money is on the\nway. Get excited!</string>
     <string name="got_it">Got it!</string>
 
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="retry">Retry</string>
+
 </resources>

@@ -56,6 +56,10 @@ internal class RecipientViewModel @Inject constructor(
         }
     }
 
+    fun onRetryGetRecipient() = getRecipients()
+
+    fun onRetryGetCountries() = getCountries()
+
     fun filter(text: String) {
         recipientList?.filter { it.toString().uppercase().contains(text.uppercase()) }?.let { data ->
             if (data.isEmpty()) _uiState.value = RecipientUiState.Empty
