@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -36,7 +37,7 @@ internal fun HeaderView(
     onBack: (() -> Unit)? = null,
 ) {
     Column(
-        modifier = Modifier.background(white),
+        modifier = Modifier.background(white).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Row {
@@ -50,7 +51,7 @@ internal fun HeaderView(
         }
         Text(
             text = stringResource(id = title),
-            fontSize = 22.sp,
+            fontSize = 24.sp,
             fontWeight = FontWeight.SemiBold,
             color = black,
         )
@@ -71,7 +72,7 @@ private fun ItemView(
         contentAlignment = Alignment.Center
     ) {
         Icon(
-            modifier = Modifier.size(18.dp),
+            modifier = Modifier.size(14.dp),
             painter = painterResource(id = icon),
             contentDescription = null,
         )

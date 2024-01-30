@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -57,10 +58,7 @@ internal fun NavigationBarView(
         verticalArrangement = Arrangement.spacedBy(4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(modifier = Modifier
-            .fillMaxWidth()
-            .height(1.dp)
-            .background(grey05))
+        Divider(thickness = 1.dp, color = grey05)
         Row(
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -128,7 +126,9 @@ private fun SendItem(
             modifier = Modifier
                 .size(50.dp)
                 .shadow(elevation = 6.dp, shape = CircleShape, spotColor = grey50)
-                .background(accent100, shape = CircleShape),
+                .background(accent100, shape = CircleShape)
+                .clip(CircleShape)
+                .clickable(onClick = onClick),
             contentAlignment = Alignment.Center,
         ) {
             Icon(

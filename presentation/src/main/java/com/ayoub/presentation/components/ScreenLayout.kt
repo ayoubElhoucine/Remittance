@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -26,7 +27,7 @@ internal fun ScreenLayout (
     color: Color = white,
     header: (@Composable () -> Unit)? = null,
     footer: (@Composable () -> Unit)? = null,
-    content: @Composable LazyItemScope.() -> Unit
+    content: @Composable LazyItemScope.(PaddingValues) -> Unit
 ) {
     Scaffold(
         modifier = Modifier
@@ -45,7 +46,7 @@ internal fun ScreenLayout (
             modifier = Modifier.padding(bottom = it.calculateBottomPadding())
         ) {
             item {
-                content()
+                content(it)
             }
         }
     }
