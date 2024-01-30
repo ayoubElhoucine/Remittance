@@ -9,13 +9,14 @@ import retrofit2.HttpException
 internal interface SafeApiCall {
     suspend fun <T> safeApiCall(
         apiCall: suspend () -> T
-    ): Resource<T> {
+    ): Resource<Any?> {
         return withContext(Dispatchers.IO) {
             try {
-                val result = apiCall.invoke()
-                if (result is List<*>) Resource.Success(result.map { (it as? Mapper<*>)?.mapIt() })
-                else if (result is Mapper<*>) Resource.Success(result.mapIt())
-                else Resource.Success(result)
+                when (val result = apiCall.invoke()) {
+                    is List<*> -> Resource.Success(result.map { (it as? Mapper<*>)?.mapIt() })
+                    is Mapper<*> -> Resource.Success(result.mapIt())
+                    else -> Resource.Success(result)
+                }
             } catch (throwable: Throwable) {
                 when (throwable) {
                     is HttpException -> {
