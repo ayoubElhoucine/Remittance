@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.ayoub.presentation.ui.home.HomeScreen
+import com.ayoub.presentation.ui.recipient.RecipientScreen
 import com.ayoub.presentation.ui.sendDetails.SendDetailsScreen
 import com.ayoub.presentation.ui.sendDetails.SuccessSendScreen
 import com.ayoub.presentation.ui.sendOptions.SendDestinationScreen
@@ -52,6 +53,13 @@ internal fun AppNavGraph(
             BackHandler(onBack = appState::popBack)
             SendDestinationScreen(onBack = appState::popBack) {
                 appState.navigateTo(Screens.RECIPIENT)
+            }
+        }
+
+        composable(Screens.RECIPIENT) {
+            BackHandler(onBack = appState::popBack)
+            RecipientScreen(onBack = appState::popBack) {
+                appState.navigateTo(Screens.WALLET_OPTIONS)
             }
         }
 
