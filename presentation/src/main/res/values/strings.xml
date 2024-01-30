@@ -38,6 +38,7 @@
     <string name="recipient_gets">Recipient gets</string>
     <string name="send">Send</string>
     <string name="sent_to">Sent to</string>
+    <string name="who_sending">Who are you sending to?</string>
 
     <string name="confirm_transfer">Confirm transfer</string>
     <string name="confirm">Confirm</string>
