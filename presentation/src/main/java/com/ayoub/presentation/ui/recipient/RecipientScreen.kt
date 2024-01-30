@@ -53,8 +53,15 @@ internal fun RecipientScreen(
             onValueChanged = state::onSearchValueChanged,
         )
         when (state.selectedPage.value) {
-            RecipientPages.PREVIOUS -> PreviousRecipientView(viewModel = viewModel, onSelectRecipient = onWalletOptions)
-            RecipientPages.NEW -> NewRecipientView(viewModel = viewModel, onSelectRecipient = onWalletOptions)
+            RecipientPages.PREVIOUS -> PreviousRecipientView(
+                viewModel = viewModel,
+                onSelectRecipient = onWalletOptions
+            )
+
+            RecipientPages.NEW -> NewRecipientView(
+                viewModel = viewModel,
+                onSelectRecipient = onWalletOptions
+            )
         }
     }
 }
@@ -72,7 +79,12 @@ private fun PagesTabItem(
             .background(primary05, shape = RoundedCornerShape(8.dp))
     ) {
         RecipientPages.entries.forEach { page ->
-            PageItem(modifier = Modifier.weight(1f), page = page, isSelected = page == selectedPage, onClick = onSelectPage)
+            PageItem(
+                modifier = Modifier.weight(1f),
+                page = page,
+                isSelected = page == selectedPage,
+                onClick = onSelectPage
+            )
         }
     }
 }
