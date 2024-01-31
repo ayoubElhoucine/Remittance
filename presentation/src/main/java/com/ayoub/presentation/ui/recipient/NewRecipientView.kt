@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
@@ -38,8 +36,6 @@ import com.ayoub.presentation.common.UiState
 import com.ayoub.presentation.components.CircularProgress
 import com.ayoub.presentation.components.CountrySelector
 import com.ayoub.presentation.components.FailedView
-import com.ayoub.presentation.ui.theme.black
-import com.ayoub.presentation.ui.theme.grey05
 import com.ayoub.presentation.ui.theme.grey100
 import com.ayoub.presentation.ui.theme.grey15
 import com.ayoub.presentation.ui.theme.grey25
@@ -47,6 +43,7 @@ import com.ayoub.presentation.ui.theme.grey50
 import com.ayoub.presentation.ui.theme.primary05
 import com.ayoub.presentation.ui.theme.primary100
 import com.ayoub.presentation.ui.theme.primary15
+
 
 @Composable
 internal fun NewRecipientView(
@@ -130,7 +127,7 @@ private fun Success(
             Divider(modifier = Modifier.padding(end = 16.dp).weight(1f), thickness = 1.dp, color = grey15)
         }
         NewContactItem()
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(20.dp))
     }
 }
 
