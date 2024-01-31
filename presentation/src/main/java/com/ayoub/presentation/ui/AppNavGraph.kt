@@ -4,6 +4,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.ayoub.domain.entity.Recipient
 import com.ayoub.presentation.ui.home.HomeScreen
 import com.ayoub.presentation.ui.recipient.RecipientScreen
 import com.ayoub.presentation.ui.sendDetails.SendDetailsScreen
@@ -59,21 +60,27 @@ internal fun AppNavGraph(
         composable(Screens.RECIPIENT) {
             BackHandler(onBack = appState::popBack)
             RecipientScreen(onBack = appState::popBack) {
+                appState.navController.currentBackStackEntry?.savedStateHandle?.set(key = "recipient", value = it)
                 appState.navigateTo(Screens.WALLET_OPTIONS)
             }
         }
 
         composable(Screens.WALLET_OPTIONS) {
             BackHandler(onBack = appState::popBack)
-            WalletOptionsScreen(onBack = appState::popBack) {
-                appState.navigateTo(Screens.SEND_DETAILS)
+            appState.navController.previousBackStackEntry?.savedStateHandle?.get<Recipient>("recipient")?.let { recipient ->
+                WalletOptionsScreen(recipient = recipient, onBack = appState::popBack) {
+                    appState.navController.currentBackStackEntry?.savedStateHandle?.set(key = "recipient", value = it)
+                    appState.navigateTo(Screens.SEND_DETAILS)
+                }
             }
         }
 
         composable(Screens.SEND_DETAILS) {
             BackHandler(onBack = appState::popBack)
-            SendDetailsScreen(onBack = appState::popBack) {
-                appState.navigateTo(Screens.SUCCESS_SEND)
+            appState.navController.previousBackStackEntry?.savedStateHandle?.get<Recipient>("recipient")?.let { recipient ->
+                SendDetailsScreen(recipient = recipient, onBack = appState::popBack) {
+                    appState.navigateTo(Screens.SUCCESS_SEND)
+                }
             }
         }
 
