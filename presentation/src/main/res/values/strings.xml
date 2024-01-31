@@ -21,6 +21,7 @@
     <string name="prev_recipient">Previous recipients</string>
     <string name="new_recipient">New recipient</string>
     <string name="contact_phone">Contacts on your phone</string>
+    <string name="country">Country</string>
     <string name="search">Search…</string>
     <string name="next">Continue</string>
 

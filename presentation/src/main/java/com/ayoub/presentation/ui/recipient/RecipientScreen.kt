@@ -62,6 +62,7 @@ internal fun RecipientScreen(
             )
             RecipientPages.NEW -> NewRecipientView(
                 viewModel = viewModel,
+                state = state,
                 onSelectRecipient = onWalletOptions
             )
         }
