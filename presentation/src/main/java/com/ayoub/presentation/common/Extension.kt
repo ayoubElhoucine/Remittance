@@ -14,3 +14,11 @@ fun Context.getCountryFlag(iso: String): String {
         ""
     }
 }
+
+fun Double.nicer(
+    aroundUp: Int = 2,
+    hardDecimal: Boolean = false
+): String {
+    return if (this > this.toInt() || hardDecimal) String.format("%.${aroundUp}f", this)
+    else String.format("%.1f", this)
+}

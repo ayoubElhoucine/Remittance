@@ -50,6 +50,7 @@
     <string name="confirm_transfer">Confirm transfer</string>
     <string name="confirm">Confirm</string>
     <string name="you_sending">You’re sending</string>
+    <string name="how_you_sending">How much are you sending ?</string>
 
     <string name="success_transfer_msg">Your money is on the\nway. Get excited!</string>
     <string name="got_it">Got it!</string>

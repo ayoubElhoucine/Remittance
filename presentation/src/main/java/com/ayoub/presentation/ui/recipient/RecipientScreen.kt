@@ -26,6 +26,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ayoub.domain.entity.Recipient
 import com.ayoub.presentation.R
 import com.ayoub.presentation.common.UiState
+import com.ayoub.presentation.components.FooterView
 import com.ayoub.presentation.components.HeaderView
 import com.ayoub.presentation.components.MyButton
 import com.ayoub.presentation.components.ScreenLayout
@@ -141,24 +142,6 @@ private fun PageItem(
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
             color = if (isSelected) white else primary100
-        )
-    }
-}
-
-@Composable
-private fun FooterView(
-    onClick: () -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .shadow(elevation = 10.dp, spotColor = grey15)
-            .background(white),
-        contentAlignment = Alignment.Center,
-    ) {
-        MyButton(
-            modifier = Modifier.padding(16.dp),
-            text = R.string.next,
-            onClick = onClick,
         )
     }
 }

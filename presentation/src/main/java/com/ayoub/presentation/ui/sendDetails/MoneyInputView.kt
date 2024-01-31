@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -23,6 +24,8 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,7 +47,7 @@ import com.ayoub.presentation.ui.theme.red
 @Composable
 internal fun MoneyInputView(
     modifier: Modifier = Modifier,
-    state: UiState,
+    state: UiState?,
     value: String,
     onValueChanged: (String) -> Unit,
 ) {
@@ -64,14 +67,32 @@ internal fun MoneyInputView(
             TextField(
                 modifier = Modifier.weight(1f),
                 value = value,
+                placeholder = {
+                    Text(
+                        text = "00",
+                        fontSize = 18.sp,
+                        color = grey100,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Done,
+                    autoCorrect = false,
+                ),
                 onValueChange = onValueChanged,
-                textStyle = TextStyle(fontSize = 18.sp, color = grey100, fontWeight = FontWeight.SemiBold),
+                textStyle = TextStyle(
+                    fontSize = 18.sp,
+                    color = grey100,
+                    fontWeight = FontWeight.SemiBold
+                ),
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Color.Unspecified,
                     unfocusedContainerColor = Color.Unspecified,
                     focusedIndicatorColor = Color.Unspecified,
                     unfocusedIndicatorColor = Color.Unspecified,
                 ),
+                singleLine = true,
             )
             Text(
                 modifier = Modifier.padding(16.dp),
@@ -88,7 +109,7 @@ internal fun MoneyInputView(
                 .background(contentColor(state))
         ) {
             Text(
-                modifier = Modifier.padding(12.dp),
+                modifier = Modifier.padding(10.dp),
                 text = buildAnnotatedString {
                     append(stringResource(id = R.string.your_current_balance))
                     withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
@@ -102,24 +123,24 @@ internal fun MoneyInputView(
     }
 }
 
-private fun borderColor(state: UiState): Color {
-    return when(state) {
+private fun borderColor(state: UiState?): Color {
+    return when (state) {
         is UiState.Fail -> red
         is UiState.Success -> primary70
         else -> grey25
     }
 }
 
-private fun contentBorderColor(state: UiState): Color {
-    return when(state) {
+private fun contentBorderColor(state: UiState?): Color {
+    return when (state) {
         is UiState.Fail -> red.copy(alpha = 0.15f)
         is UiState.Success -> primary15
         else -> grey15
     }
 }
 
-private fun contentColor(state: UiState): Color {
-    return when(state) {
+private fun contentColor(state: UiState?): Color {
+    return when (state) {
         is UiState.Fail -> red.copy(alpha = 0.05f)
         is UiState.Success -> primary05
         else -> grey05

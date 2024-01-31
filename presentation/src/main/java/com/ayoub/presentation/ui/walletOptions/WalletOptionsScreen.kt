@@ -35,6 +35,7 @@ import com.ayoub.domain.entity.Wallet
 import com.ayoub.presentation.R
 import com.ayoub.presentation.common.UiState
 import com.ayoub.presentation.components.CircularProgress
+import com.ayoub.presentation.components.FooterView
 import com.ayoub.presentation.components.HeaderView
 import com.ayoub.presentation.components.MyButton
 import com.ayoub.presentation.components.ScreenLayout
@@ -149,26 +150,6 @@ private fun WalletItem(
             fontSize = 16.sp,
             fontWeight = FontWeight.Medium,
             color = grey100,
-        )
-    }
-}
-
-@Composable
-private fun FooterView(
-    enabled: Boolean,
-    onClick: () -> Unit,
-) {
-    Box(
-        modifier = Modifier
-            .shadow(elevation = 10.dp, spotColor = grey15)
-            .background(white),
-        contentAlignment = Alignment.Center,
-    ) {
-        MyButton(
-            modifier = Modifier.padding(16.dp),
-            enabled = enabled,
-            text = R.string.next,
-            onClick = onClick,
         )
     }
 }
