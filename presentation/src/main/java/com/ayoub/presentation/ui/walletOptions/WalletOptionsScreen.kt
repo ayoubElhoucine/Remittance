@@ -42,6 +42,7 @@ import com.ayoub.presentation.ui.theme.grey100
 import com.ayoub.presentation.ui.theme.grey15
 import com.ayoub.presentation.ui.theme.primary05
 import com.ayoub.presentation.ui.theme.primary100
+import com.ayoub.presentation.ui.theme.white
 
 @Composable
 internal fun WalletOptionsScreen(
@@ -158,7 +159,9 @@ private fun FooterView(
     onClick: () -> Unit,
 ) {
     Box(
-        modifier = Modifier.shadow(elevation = 10.dp, spotColor = grey15),
+        modifier = Modifier
+            .shadow(elevation = 10.dp, spotColor = grey15)
+            .background(white),
         contentAlignment = Alignment.Center,
     ) {
         MyButton(

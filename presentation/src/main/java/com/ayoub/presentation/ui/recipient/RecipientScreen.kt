@@ -150,7 +150,9 @@ private fun FooterView(
     onClick: () -> Unit
 ) {
     Box(
-        modifier = Modifier.shadow(elevation = 10.dp, spotColor = grey15),
+        modifier = Modifier
+            .shadow(elevation = 10.dp, spotColor = grey15)
+            .background(white),
         contentAlignment = Alignment.Center,
     ) {
         MyButton(
