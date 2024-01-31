@@ -35,6 +35,7 @@ import com.ayoub.domain.entity.Wallet
 import com.ayoub.presentation.R
 import com.ayoub.presentation.common.UiState
 import com.ayoub.presentation.components.CircularProgress
+import com.ayoub.presentation.components.FailedView
 import com.ayoub.presentation.components.FooterView
 import com.ayoub.presentation.components.HeaderView
 import com.ayoub.presentation.components.MyButton
@@ -54,13 +55,13 @@ internal fun WalletOptionsScreen(
 ) {
     val uiState = viewModel.uiState.collectAsState()
     val selectedWallet = viewModel.selectedWallet.collectAsState()
-    
+
     ScreenLayout(
         header = {
             HeaderView(title = R.string.choose_wallet, onBack = onBack)
         },
         footer = {
-            when(uiState.value) {
+            when (uiState.value) {
                 is UiState.Success -> FooterView(enabled = selectedWallet.value != null) {
                     viewModel.next(recipient, onSendDetails)
                 }
@@ -68,18 +69,29 @@ internal fun WalletOptionsScreen(
             }
         }
     ) {
-        Spacer(modifier = Modifier
-            .padding(top = 16.dp)
-            .height(it.calculateTopPadding()))
-        when(val result = uiState.value) {
-            UiState.Loading -> Loading()
+        Spacer(
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .height(it.calculateTopPadding())
+        )
+        when (val result = uiState.value) {
+            UiState.Loading -> Loading(
+                modifier = Modifier
+                    .fillParentMaxSize()
+                    .padding(bottom = 180.dp)
+            )
             is UiState.Success -> Success(
                 data = result.data as List<Wallet>,
                 selectedWallet = selectedWallet.value,
                 onSelect = viewModel::setWallet,
             )
-            is UiState.Fail -> TODO()
-            UiState.Idle, null -> TODO()
+            is UiState.Fail -> FailedView(
+                modifier = Modifier
+                    .fillParentMaxSize()
+                    .padding(bottom = 180.dp),
+                onRetry = viewModel::onRetry
+            )
+            UiState.Idle, null -> Unit
         }
     }
 }
@@ -89,8 +101,8 @@ private fun Loading(
     modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = modifier.padding(top = 60.dp).fillMaxWidth(),
-        contentAlignment = Alignment.TopCenter,
+        modifier = modifier,
+        contentAlignment = Alignment.Center,
     ) {
         CircularProgress(modifier = Modifier.size(25.dp))
     }
