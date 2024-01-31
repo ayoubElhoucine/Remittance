@@ -19,8 +19,8 @@ internal fun rememberRecipientState(
     selectedPage: MutableState<RecipientPages> = mutableStateOf(RecipientPages.PREVIOUS),
     searchTextValue: MutableState<String> = mutableStateOf(""),
     selectedCountry: MutableState<Country?> = mutableStateOf(null),
-) = remember(selectedPage, searchTextValue) {
-    RecipientState(selectedPage, searchTextValue, selectedCountry)
+) = remember(selectedPage, searchTextValue, selectedCountry) {
+    RecipientState.Builder().build(selectedPage, searchTextValue, selectedCountry)
 }
 
 @Stable
@@ -29,6 +29,9 @@ internal class RecipientState(
     val searchTextValue: MutableState<String>,
     val selectedCountry: MutableState<Country?>,
 ) {
+    private companion object {
+        private var instance: RecipientState? = null
+    }
 
     fun selectPage(page: RecipientPages) {
         selectedPage.value = page
@@ -40,6 +43,19 @@ internal class RecipientState(
 
     fun selectCountry(country: Country) {
         selectedCountry.value = country
+    }
+
+    class Builder {
+        fun build(
+            selectedPage: MutableState<RecipientPages>,
+            searchTextValue: MutableState<String>,
+            selectedCountry: MutableState<Country?>,
+        ): RecipientState {
+            instance ?: run {
+                instance = RecipientState(selectedPage, searchTextValue, selectedCountry)
+            }
+            return instance!!
+        }
     }
 
 }

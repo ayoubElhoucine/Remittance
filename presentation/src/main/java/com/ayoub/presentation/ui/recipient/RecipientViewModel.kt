@@ -66,4 +66,15 @@ internal class RecipientViewModel @Inject constructor(
             else _uiState.value = RecipientUiState.Success(data)
         }
     }
+
+    fun createRecipientAndContinue(country: Country, onContinue: (Recipient) -> Unit) {
+        onContinue(
+            Recipient(
+                id = "any id",
+                name = "Any name",
+                country = country.name,
+                mobileWallet = null,
+            )
+        )
+    }
 }
