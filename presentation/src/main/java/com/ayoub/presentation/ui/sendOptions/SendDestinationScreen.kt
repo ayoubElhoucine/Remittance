@@ -11,9 +11,9 @@ import com.ayoub.presentation.components.HeaderView
 import com.ayoub.presentation.components.ScreenLayout
 import com.ayoub.presentation.ui.theme.grey05
 
-private enum class SendToAfricaOptions {
-    MOBILE_WALLET,
-    BANK_TRANSFER,
+private enum class SendToAfricaOptions(val title: Int) {
+    MOBILE_WALLET(title = R.string.mobile_wallets),
+    BANK_TRANSFER(title = R.string.bank_transfer),
 }
 
 @Composable
@@ -29,15 +29,8 @@ internal fun SendDestinationScreen(
         Spacer(modifier = Modifier.height(it.calculateTopPadding()))
         Divider(thickness = 1.dp, color = grey05)
         SendToAfricaOptions.entries.forEach { option ->
-            OptionItem(title = title(option), icon = R.drawable.ic_arrow_send, onClick = onRecipient)
+            OptionItem(title = option.title, icon = R.drawable.ic_arrow_send, onClick = onRecipient)
             Divider(thickness = 1.dp, color = grey05)
         }
-    }
-}
-
-private fun title(option: SendToAfricaOptions): Int {
-    return when (option) {
-        SendToAfricaOptions.MOBILE_WALLET -> R.string.mobile_wallets
-        SendToAfricaOptions.BANK_TRANSFER -> R.string.bank_transfer
     }
 }

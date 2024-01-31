@@ -32,10 +32,10 @@ import com.ayoub.presentation.ui.theme.grey100
 import com.ayoub.presentation.ui.theme.primary05
 import com.ayoub.presentation.ui.theme.primary100
 
-private enum class SendOptions {
-    TO_MONECO_BALANCE,
-    BANK_TRANSFER,
-    SEND_TO_AFRICA,
+private enum class SendOptions(val title: Int, val icon: Int) {
+    TO_MONECO_BALANCE(title = R.string.to_moneco_balance, icon = R.drawable.ic_account),
+    BANK_TRANSFER(title = R.string.bank_transfer, icon = R.drawable.ic_market),
+    SEND_TO_AFRICA(title = R.string.send_to_africa, icon = R.drawable.ic_web),
 }
 
 @Composable
@@ -51,24 +51,8 @@ internal fun SendOptionsScreen(
         Spacer(modifier = Modifier.height(it.calculateTopPadding()))
         Divider(thickness = 1.dp, color = grey05)
         SendOptions.entries.forEach { option ->
-            OptionItem(title = title(option), icon = icon(option), onClick = onSendDestination)
+            OptionItem(title = option.title, icon = option.icon, onClick = onSendDestination)
             Divider(thickness = 1.dp, color = grey05)
         }
-    }
-}
-
-private fun title(option: SendOptions): Int {
-    return when (option) {
-        SendOptions.TO_MONECO_BALANCE -> R.string.to_moneco_balance
-        SendOptions.BANK_TRANSFER -> R.string.bank_transfer
-        SendOptions.SEND_TO_AFRICA -> R.string.send_to_africa
-    }
-}
-
-private fun icon(option: SendOptions): Int {
-    return when (option) {
-        SendOptions.TO_MONECO_BALANCE -> R.drawable.ic_account
-        SendOptions.BANK_TRANSFER -> R.drawable.ic_market
-        SendOptions.SEND_TO_AFRICA -> R.drawable.ic_web
     }
 }
