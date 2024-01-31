@@ -27,7 +27,15 @@ internal class SendDetailsState(
 ) {
 
     fun onMoneyInputValueChanged(value: String) {
-        moneyInputValue.value = value
+        value.toDoubleOrNull()?.let {
+            moneyInputValue.value = value
+        } ?: run {
+            moneyInputValue.value = ""
+        }
+    }
+
+    fun setConversionRate(value: Double) {
+        conversionRate.value = value
     }
 
 }

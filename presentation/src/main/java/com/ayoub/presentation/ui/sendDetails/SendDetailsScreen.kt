@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -54,7 +55,13 @@ internal fun SendDetailsScreen(
         }
     ) {
         Text(
-            modifier = Modifier.padding(horizontal = 16.dp).padding(top = it.calculateTopPadding().plus(16.dp)),
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .padding(
+                    top = it
+                        .calculateTopPadding()
+                        .plus(16.dp)
+                ),
             text = stringResource(id = R.string.how_you_sending),
             fontWeight = FontWeight.Medium,
             fontSize = 16.sp,
@@ -64,7 +71,10 @@ internal fun SendDetailsScreen(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             state = uiState.value,
             value = state.moneyInputValue.value,
-            onValueChanged = state::onMoneyInputValueChanged,
+            onValueChanged = { value ->
+                state.onMoneyInputValueChanged(value)
+                viewModel.calculate(value, onCalculateConversion = state::setConversionRate)
+            },
         )
         FreeRemittanceItem()
         FeesItem(state = state)

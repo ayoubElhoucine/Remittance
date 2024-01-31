@@ -89,10 +89,10 @@ private fun Loading(
     modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = modifier.padding(top = 80.dp).fillMaxWidth(),
+        modifier = modifier.padding(top = 60.dp).fillMaxWidth(),
         contentAlignment = Alignment.TopCenter,
     ) {
-        CircularProgress(modifier = Modifier.size(30.dp))
+        CircularProgress(modifier = Modifier.size(25.dp))
     }
 }
 
