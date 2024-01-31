@@ -29,8 +29,11 @@ internal class RecipientState(
     val searchTextValue: MutableState<String>,
     val selectedCountry: MutableState<Country?>,
 ) {
-    private companion object {
+    companion object {
         private var instance: RecipientState? = null
+        fun onCleared() {
+            instance = null
+        }
     }
 
     fun selectPage(page: RecipientPages) {

@@ -77,4 +77,9 @@ internal class RecipientViewModel @Inject constructor(
             )
         )
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        RecipientState.onCleared()
+    }
 }
