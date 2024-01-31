@@ -2,22 +2,31 @@
 
 package com.ayoub.presentation.ui.recipient
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -32,6 +41,12 @@ import com.ayoub.presentation.components.FailedView
 import com.ayoub.presentation.ui.theme.black
 import com.ayoub.presentation.ui.theme.grey05
 import com.ayoub.presentation.ui.theme.grey100
+import com.ayoub.presentation.ui.theme.grey15
+import com.ayoub.presentation.ui.theme.grey25
+import com.ayoub.presentation.ui.theme.grey50
+import com.ayoub.presentation.ui.theme.primary05
+import com.ayoub.presentation.ui.theme.primary100
+import com.ayoub.presentation.ui.theme.primary15
 
 @Composable
 internal fun NewRecipientView(
@@ -99,5 +114,81 @@ private fun Success(
             countries = data,
             onSelectCountry = state::selectCountry,
         )
+        ChooseContactItem()
+        Row(
+            modifier = Modifier.padding(vertical = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            Divider(modifier = Modifier.padding(start = 16.dp).weight(1f), thickness = 1.dp, color = grey15)
+            Text(
+                text = stringResource(id = R.string.add_manually).uppercase(),
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 12.sp,
+                color = grey50,
+            )
+            Divider(modifier = Modifier.padding(end = 16.dp).weight(1f), thickness = 1.dp, color = grey15)
+        }
+        NewContactItem()
+        Spacer(modifier = Modifier.height(80.dp))
+    }
+}
+
+@Composable
+private fun ChooseContactItem() {
+    Row(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+            .height(48.dp)
+            .border(width = 1.dp, color = primary15, shape = RoundedCornerShape(8.dp))
+            .background(primary05, shape = RoundedCornerShape(8.dp)),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        Spacer(modifier = Modifier.weight(1f))
+        Icon(
+            painter = painterResource(id = R.drawable.ic_list),
+            contentDescription = null,
+            tint = primary100,
+        )
+        Text(
+            text = stringResource(id = R.string.choose_contact),
+            fontWeight = FontWeight.SemiBold,
+            fontSize = 16.sp,
+            color = primary100,
+        )
+        Spacer(modifier = Modifier.weight(1f))
+    }
+}
+
+@Composable
+private fun NewContactItem() {
+    Column(
+        modifier = Modifier.padding(horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        listOf(
+            stringResource(id = R.string.phone_number),
+            stringResource(id = R.string.first_name),
+            stringResource(id = R.string.last_name),
+        ).forEach { item ->
+            Text(
+                text = item,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Normal,
+                color = grey100,
+            )
+            OutlinedTextField(
+                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+                value = "Enter Value",
+                onValueChange = {},
+                enabled = false,
+                shape = RoundedCornerShape(8.dp),
+                colors = OutlinedTextFieldDefaults.colors(
+                    disabledBorderColor = grey25
+                )
+            )
+        }
     }
 }

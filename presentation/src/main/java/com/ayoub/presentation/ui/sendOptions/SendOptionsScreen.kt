@@ -48,7 +48,7 @@ internal fun SendOptionsScreen(
             HeaderView(title = R.string.send_money, onClose = onClose)
         }
     ) {
-        Spacer(modifier = Modifier.height(it.calculateTopPadding()))
+        Spacer(modifier = Modifier.padding(top = 16.dp).height(it.calculateTopPadding()))
         Divider(thickness = 1.dp, color = grey05)
         SendOptions.entries.forEach { option ->
             OptionItem(title = option.title, icon = option.icon, onClick = onSendDestination)

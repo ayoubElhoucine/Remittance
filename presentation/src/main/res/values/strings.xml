@@ -24,8 +24,12 @@
     <string name="country">Country</string>
     <string name="search">Search…</string>
     <string name="next">Continue</string>
+    <string name="phone_number">Phone number</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
 
     <string name="choose_wallet">Choose a mobile wallet</string>
+    <string name="choose_contact">Choose a contact</string>
     <string name="how_much">How much are you sending ?</string>
     <string name="your_current_balance">Your current balance is</string>
     <string name="yearly_free">Yearly free remittances</string>
@@ -41,6 +45,7 @@
     <string name="sent_to">Sent to</string>
     <string name="who_sending">Who are you sending to?</string>
     <string name="no_result">No matching results found !</string>
+    <string name="add_manually">Or add manually</string>
 
     <string name="confirm_transfer">Confirm transfer</string>
     <string name="confirm">Confirm</string>

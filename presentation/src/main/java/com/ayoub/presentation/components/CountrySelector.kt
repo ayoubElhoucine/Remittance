@@ -18,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -47,6 +48,7 @@ internal fun CountrySelector(
                 .fillMaxWidth()
                 .height(56.dp)
                 .border(width = 1.dp, color = grey25, shape = RoundedCornerShape(8.dp))
+                .clip(RoundedCornerShape(8.dp))
                 .clickable { showSelector.value = true }
                 .padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically,

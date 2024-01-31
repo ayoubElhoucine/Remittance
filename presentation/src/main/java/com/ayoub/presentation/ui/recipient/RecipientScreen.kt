@@ -45,7 +45,7 @@ internal fun RecipientScreen(
             HeaderView(title = R.string.who_sending, onBack = onBack)
         }
     ) {
-        Spacer(modifier = Modifier.height(it.calculateTopPadding()))
+        Spacer(modifier = Modifier.padding(top = 16.dp).height(it.calculateTopPadding()))
         PagesTabItem(selectedPage = state.selectedPage.value, onSelectPage = state::selectPage)
         SearchTextField(
             modifier = Modifier.padding(16.dp),

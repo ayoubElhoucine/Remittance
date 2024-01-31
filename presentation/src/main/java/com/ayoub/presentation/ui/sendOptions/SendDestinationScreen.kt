@@ -2,6 +2,7 @@ package com.ayoub.presentation.ui.sendOptions
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -26,7 +27,7 @@ internal fun SendDestinationScreen(
             HeaderView(title = R.string.send_to_africa, onBack = onBack)
         }
     ) {
-        Spacer(modifier = Modifier.height(it.calculateTopPadding()))
+        Spacer(modifier = Modifier.padding(top = 16.dp).height(it.calculateTopPadding()))
         Divider(thickness = 1.dp, color = grey05)
         SendToAfricaOptions.entries.forEach { option ->
             OptionItem(title = option.title, icon = R.drawable.ic_arrow_send, onClick = onRecipient)

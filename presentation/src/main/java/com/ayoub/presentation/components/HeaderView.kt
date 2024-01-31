@@ -37,7 +37,10 @@ internal fun HeaderView(
     onBack: (() -> Unit)? = null,
 ) {
     Column(
-        modifier = Modifier.background(white).padding(16.dp),
+        modifier = Modifier
+            .background(white)
+            .padding(horizontal = 16.dp)
+            .padding(top = 16.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Row {
