@@ -28,7 +28,6 @@ internal class WalletOptionsViewModel @Inject constructor(
 
     private fun getWallets() = viewModelScope.launch {
         _uiState.value = UiState.Loading
-        delay(2000)
         when(val result = repo.getWallets()) {
             is Resource.Success -> {
                 (result.value as? List<Wallet>)?.let {
