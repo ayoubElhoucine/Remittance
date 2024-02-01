@@ -39,4 +39,9 @@ internal class SendDetailsViewModel @Inject constructor(
         }
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        SendDetailsState.onCleared()
+    }
+
 }

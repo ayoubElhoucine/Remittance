@@ -38,12 +38,12 @@ import com.ayoub.presentation.ui.theme.primary100
 import com.ayoub.presentation.ui.theme.white
 
 
-private enum class Pages(val title: String) {
-    HOME("home"),
-    CARDS("Cards"),
-    SENDS("Send"),
-    TONOINES("Tonotines"),
-    SETTINGS("Settings")
+private enum class Pages(val title: Int, val icon: Int) {
+    HOME(R.string.home, R.drawable.ic_home),
+    CARDS(R.string.cards, R.drawable.ic_credit),
+    SENDS(R.string.send, R.drawable.ic_send),
+    TONOINES(R.string.tontines, R.drawable.ic_money),
+    SETTINGS(R.string.settings, R.drawable.ic_setting)
 }
 
 @Composable
@@ -53,7 +53,7 @@ internal fun NavigationBarView(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(64.dp)
+            .height(68.dp)
             .background(white),
         verticalArrangement = Arrangement.spacedBy(4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -71,8 +71,8 @@ internal fun NavigationBarView(
                 } else {
                     TabItem(
                         modifier = Modifier.weight(1f),
-                        title = title(page),
-                        icon = icon(page),
+                        title = page.title,
+                        icon = page.icon,
                         isSelected = page == Pages.HOME
                     ) {}
                 }
@@ -138,26 +138,6 @@ private fun SendItem(
                 tint = black,
             )
         }
-    }
-}
-
-private fun title(page: Pages): Int {
-    return when (page) {
-        Pages.HOME -> R.string.home
-        Pages.CARDS -> R.string.cards
-        Pages.SENDS -> R.string.send
-        Pages.TONOINES -> R.string.tontines
-        Pages.SETTINGS -> R.string.settings
-    }
-}
-
-private fun icon(page: Pages): Int {
-    return when (page) {
-        Pages.HOME -> R.drawable.ic_home
-        Pages.CARDS -> R.drawable.ic_credit
-        Pages.SENDS -> R.drawable.ic_send
-        Pages.TONOINES -> R.drawable.ic_money
-        Pages.SETTINGS -> R.drawable.ic_setting
     }
 }
 

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -28,6 +29,8 @@ import com.ayoub.presentation.ui.theme.blue100
 import com.ayoub.presentation.ui.theme.grey100
 import com.ayoub.presentation.ui.theme.grey50
 
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun SendDetailsScreen(
     viewModel: SendDetailsViewModel = hiltViewModel(),
@@ -47,10 +50,9 @@ internal fun SendDetailsScreen(
                 enabled = when (uiState.value) {
                     is UiState.Success -> true
                     else -> false
-                }
-            ) {
-
-            }
+                },
+                onClick = state::showSheet
+            )
         }
     ) {
         Text(
@@ -78,6 +80,15 @@ internal fun SendDetailsScreen(
         FreeRemittanceItem()
         FeesItem(state = state)
     }
+
+    if (state.showConfirmationSheet.value) {
+        ConfirmationSheet(
+            recipient = recipient,
+            sendingValue = "${state.recipientGet.value.nicer()} XOF",
+            onDismiss = state::hideSheet,
+            onConfirm = onSuccess,
+        )
+    }
 }
 
 @Composable
@@ -98,7 +109,10 @@ private fun FeesItem(
         SingleFeeItem(title = stringResource(id = R.string.transfer_fees), value = 0.0)
         SingleFeeItem(stringResource(id = R.string.conversion_rate), state.conversionRate.value, "XOF")
         SingleFeeItem(title = stringResource(id = R.string.you_spend_total), value = state.total.value)
-        Box(modifier = Modifier.padding(vertical = 8.dp).fillMaxWidth().dashed())
+        Box(modifier = Modifier
+            .padding(vertical = 8.dp)
+            .fillMaxWidth()
+            .dashed())
         Row(
             verticalAlignment = Alignment.CenterVertically,
         ) {
