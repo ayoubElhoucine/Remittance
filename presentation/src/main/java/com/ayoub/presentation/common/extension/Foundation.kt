@@ -1,7 +1,6 @@
-package com.ayoub.presentation.common
+package com.ayoub.presentation.common.extension
 
 import android.content.Context
-import android.telephony.TelephonyManager
 
 fun Context.getCountryFlag(iso: String): String {
     return try {

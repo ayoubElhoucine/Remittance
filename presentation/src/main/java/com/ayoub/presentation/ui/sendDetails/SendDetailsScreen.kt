@@ -1,17 +1,15 @@
 package com.ayoub.presentation.ui.sendDetails
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -21,7 +19,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ayoub.domain.entity.Recipient
 import com.ayoub.presentation.R
 import com.ayoub.presentation.common.UiState
-import com.ayoub.presentation.common.nicer
+import com.ayoub.presentation.common.extension.dashed
+import com.ayoub.presentation.common.extension.nicer
 import com.ayoub.presentation.components.FooterView
 import com.ayoub.presentation.components.HeaderView
 import com.ayoub.presentation.components.ScreenLayout
@@ -73,7 +72,7 @@ internal fun SendDetailsScreen(
             value = state.moneyInputValue.value,
             onValueChanged = { value ->
                 state.onMoneyInputValueChanged(value)
-                viewModel.calculate(value, onCalculateConversion = state::setConversionRate)
+                viewModel.calculate(value, onCalculateTotal = state::updateValues)
             },
         )
         FreeRemittanceItem()
@@ -95,10 +94,28 @@ private fun FeesItem(
             fontSize = 16.sp,
             color = grey100,
         )
-        SingleFeeItem(title = stringResource(id = R.string.moneco_fees), value = 0.0)
+        SingleFeeItem(title = stringResource(id = R.string.moneco_fees), value = 1.0)
         SingleFeeItem(title = stringResource(id = R.string.transfer_fees), value = 0.0)
-        SingleFeeItem(title = stringResource(id = R.string.conversion_rate), value = state.conversionRate.value)
+        SingleFeeItem(stringResource(id = R.string.conversion_rate), state.conversionRate.value, "XOF")
         SingleFeeItem(title = stringResource(id = R.string.you_spend_total), value = state.total.value)
+        Box(modifier = Modifier.padding(vertical = 8.dp).fillMaxWidth().dashed())
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                modifier = Modifier.weight(1f),
+                text = stringResource(id = R.string.recipient_gets),
+                fontWeight = FontWeight.Normal,
+                fontSize = 14.sp,
+                color = grey50,
+            )
+            Text(
+                text = "${state.recipientGet.value.nicer()} XOF",
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 18.sp,
+                color = grey100,
+            )
+        }
     }
 }
 
@@ -106,6 +123,7 @@ private fun FeesItem(
 private fun SingleFeeItem(
     title: String,
     value: Double,
+    currency: String = "EUR"
 ) {
     Row {
         Text(
@@ -116,7 +134,7 @@ private fun SingleFeeItem(
             color = grey50,
         )
         Text(
-            text = "${value.nicer()} EUR",
+            text = "${value.nicer()} $currency",
             fontWeight = FontWeight.Normal,
             fontSize = 14.sp,
             color = grey100,

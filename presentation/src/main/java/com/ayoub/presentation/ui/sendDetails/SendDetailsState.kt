@@ -6,17 +6,16 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import com.ayoub.domain.entity.Country
-import com.ayoub.presentation.R
 
 
 @Composable
 internal fun rememberSendDetailsState(
     moneyInputValue: MutableState<String> = mutableStateOf(""),
-    conversionRate: MutableState<Double> = mutableDoubleStateOf(0.0),
+    conversionRate: MutableState<Double> = mutableDoubleStateOf(655.94),
     total: MutableState<Double> = mutableDoubleStateOf(0.0),
-) = remember(moneyInputValue, conversionRate, total) {
-    SendDetailsState(moneyInputValue, conversionRate, total)
+    recipientGet: MutableState<Double> = mutableDoubleStateOf(0.0),
+) = remember(moneyInputValue, conversionRate, total, recipientGet) {
+    SendDetailsState(moneyInputValue, conversionRate, total, recipientGet)
 }
 
 @Stable
@@ -24,6 +23,7 @@ internal class SendDetailsState(
     val moneyInputValue: MutableState<String>,
     val conversionRate: MutableState<Double>,
     val total: MutableState<Double>,
+    val recipientGet: MutableState<Double>,
 ) {
 
     fun onMoneyInputValueChanged(value: String) {
@@ -34,8 +34,9 @@ internal class SendDetailsState(
         }
     }
 
-    fun setConversionRate(value: Double) {
-        conversionRate.value = value
+    fun updateValues(total: Double, recipientGet: Double) {
+        this.total.value = total
+        this.recipientGet.value = recipientGet
     }
 
 }

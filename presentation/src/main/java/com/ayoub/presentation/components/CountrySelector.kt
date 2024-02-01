@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ayoub.domain.entity.Country
 import com.ayoub.presentation.R
-import com.ayoub.presentation.common.getCountryFlag
+import com.ayoub.presentation.common.extension.getCountryFlag
 import com.ayoub.presentation.ui.theme.grey100
 import com.ayoub.presentation.ui.theme.grey25
 import com.ayoub.presentation.ui.theme.grey50
